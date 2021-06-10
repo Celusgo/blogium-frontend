@@ -10,7 +10,23 @@ export default function NewStoryPage() {
   const [isSaveButtonDisabled, setSaveButtonDisable] = useState(false);
   const history = useHistory();
 
-  function onPostSaveButtonClick() {}
+  function onPostSaveButtonClick() {
+    const body = {
+      "title": `${title}`,
+      "coverUrl": `${coverUrl}`,
+      "content": `${content}`,
+      "contentPreview": `${content.replace("<p>", "").replace("</p>", "").slice(0,25)}...`
+    }
+    const request = axios.post("http://localhost:4001/posts", body);
+    request.then(response => {
+      setTitle("");
+      setCoverUrl("");
+      setContent("");
+      console.log(response.data);
+      history.push("/");
+    })
+    request.catch(error => alert("Algo deu errado. Por favor, tente novamente!"));
+  }
 
   return (
     <PostManipulation
