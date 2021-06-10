@@ -16,7 +16,7 @@ export default function NewStoryPage() {
       "title": `${title}`,
       "coverUrl": `${coverUrl}`,
       "content": `${content}`,
-      "contentPreview": `${content.replace("<p>", "").replace("</p>", "").slice(0,25)}...`
+      "contentPreview": `${content.replace("<p>", "").replace("</p>", "").slice(0,25)}${content.length >= 25?"...":""}`
     }
     const request = axios.post("http://localhost:4001/posts", body);
     request.then(response => {
