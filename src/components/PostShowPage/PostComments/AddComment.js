@@ -21,8 +21,8 @@ export default function AddComment({ postId, setComments }) {
     const request = axios.post(`http://localhost:4001/posts/${postId}/comments`, data);
     request.then(()=> updateComments());
     request.catch(()=> alert("Algo deu errado. Por favor, tente novamente!"))
-    setName('');
-    setContent('');
+    setName("");
+    setContent("");
   }
 
   return (

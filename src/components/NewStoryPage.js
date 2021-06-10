@@ -11,6 +11,7 @@ export default function NewStoryPage() {
   const history = useHistory();
 
   function onPostSaveButtonClick() {
+    setSaveButtonDisable(true);
     const body = {
       "title": `${title}`,
       "coverUrl": `${coverUrl}`,
@@ -19,13 +20,15 @@ export default function NewStoryPage() {
     }
     const request = axios.post("http://localhost:4001/posts", body);
     request.then(response => {
+      setSaveButtonDisable(false);
       setTitle("");
       setCoverUrl("");
       setContent("");
-      console.log(response.data);
       history.push("/");
     })
-    request.catch(()=> alert("Algo deu errado. Por favor, tente novamente!"));
+    request.catch(()=> {alert("Algo deu errado. Por favor, tente novamente!")
+    setSaveButtonDisable(true);
+  });
   }
 
   return (

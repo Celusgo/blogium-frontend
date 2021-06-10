@@ -17,7 +17,6 @@ export default function PostShowPage() {
   useEffect(() => {
     const request = axios.get(`http://localhost:4001/posts/${postId}`);
     request.then(response=>{
-      console.log(response.data);
       setPost(response.data);
     })
   }, [postId]);

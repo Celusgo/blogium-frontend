@@ -6,7 +6,7 @@ import TextLink from './TextLink';
 import OverlayBorder from './OverlayBorder';
 import Meta from './Meta';
 
-export default function PostPreview({ post }) {
+export default function PostPreview({ post, commentsNumber }) {
   return (
     <Container>
       <ImageLink to={`/posts/${post.id}`}>
@@ -20,7 +20,7 @@ export default function PostPreview({ post }) {
         </TextLink>
       </Content>
       <Meta>
-        {post.commentCount} comments
+        {commentsNumber.filter((each)=>each.postId === post.id).length} comments
       </Meta>
     </Container>
   );
