@@ -19,14 +19,14 @@ export default function NewStoryPage() {
       "contentPreview": `${content.replace("<p>", "").replace("</p>", "").slice(0,25)}${content.length >= 25?"...":""}`
     }
     const request = axios.post("http://localhost:4001/posts", body);
-    request.then(response => {
+    request.then(() => {
       setSaveButtonDisable(false);
       setTitle("");
       setCoverUrl("");
       setContent("");
       history.push("/");
     })
-    request.catch(()=> {alert("Algo deu errado. Por favor, tente novamente!")
+    request.catch((error)=> {alert(error.response.data);
     setSaveButtonDisable(true);
   });
   }

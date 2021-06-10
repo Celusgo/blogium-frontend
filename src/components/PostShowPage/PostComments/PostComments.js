@@ -10,7 +10,7 @@ export default function PostComments({ postId }) {
   useEffect(() => {
     const request = axios.get(`http://localhost:4001/posts/${postId}/comments`);
     request.then(response => setComments(response.data));
-    request.catch(()=> alert("Algo deu errado. Por favor, tente novamente!"));
+    request.catch((error)=> alert(error.response.data));
   }, [postId]);
   
   return (
