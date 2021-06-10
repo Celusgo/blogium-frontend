@@ -25,7 +25,7 @@ export default function NewStoryPage() {
       console.log(response.data);
       history.push("/");
     })
-    request.catch(error => alert("Algo deu errado. Por favor, tente novamente!"));
+    request.catch(()=> alert("Algo deu errado. Por favor, tente novamente!"));
   }
 
   return (
